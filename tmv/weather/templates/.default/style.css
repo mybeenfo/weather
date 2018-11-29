@@ -1,0 +1,60 @@
+.weather_container {
+    position: relative;
+}
+
+.weather_wrapper {
+    position: absolute;
+    display: flex;
+}
+
+.weather_element {
+    margin-right: 5px;
+}
+
+.weather_title {
+    margin-bottom: 10px;
+}
+
+.weather_temperature:before {
+    content: ' ';
+    background: url(images/thermometer.svg) no-repeat;
+    display: inline-block;
+    background-size: contain;
+}
+
+.weather_humidity:before {
+    content: ' ';
+    background: url(images/humidity.svg) no-repeat;
+    display: inline-block;
+    background-size: contain;
+}
+
+.weather_pressure:before {
+    content: ' ';
+    background: url(images/pressure.svg) no-repeat;
+    display: inline-block;
+    background-size: contain;
+}
+
+.weather_wind:before {
+    content: ' ';
+    background: url(images/wind.svg) no-repeat;
+    display: inline-block;
+    background-size: contain;
+}
+
+.weather_temperature,
+.weather_humidity,
+.weather_pressure,
+.weather_wind {
+    display: flex;
+    align-items: center;
+}
+
+.weather_temperature:before,
+.weather_humidity:before,
+.weather_pressure:before,
+.weather_wind:before {
+    width: 30px;
+    height: 30px;
+}
