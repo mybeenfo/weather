@@ -11,6 +11,12 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die(); ?>
 			    <div class="weather_temperature weather_element">Температура: <?= $arResult['WEATHER']['TEMPERATURE'] ?>C</div>
             <? endif ?>
 
+			<? if($arParams['CURRENT_WEATHER']) : ?>
+                <div class="weather_current_weather weather_element">
+                    <img src="http://openweathermap.org/img/w/<?= $arResult['WEATHER']['CURRENT_WEATHER']['IMG']?>.png">
+                </div>
+			<? endif ?>
+
 	        <? if($arParams['HUMIDITY']) : ?>
 			    <div class="weather_humidity weather_element">Влажость: <?= $arResult['WEATHER']['HUMIDITY'] ?>%</div>
 	        <? endif ?>

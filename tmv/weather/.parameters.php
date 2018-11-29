@@ -58,6 +58,11 @@ $arComponentParameters = [
 			"NAME"      =>  Loc::getMessage('WEATHER_COMPONENT_PRESSURE'),
 			"TYPE"      =>  "CHECKBOX",
 		),
+		"CURRENT_WEATHER"  =>  array(
+			"PARENT"    =>  "BASE",
+			"NAME"      =>  Loc::getMessage('WEATHER_COMPONENT_CURRENT_WEATHER'),
+			"TYPE"      =>  "CHECKBOX",
+		),
 		// Настройки кэширования
 		'CACHE_TIME' => ['DEFAULT' => 3600],
 	]

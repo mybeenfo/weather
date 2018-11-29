@@ -47,6 +47,8 @@ class ExampleCompSimple extends CBitrixComponent
 		$arParams['PRESSURE'] = ($arParams['PRESSURE'] == 'Y');
 		// Параметр ветра
 		$arParams['WIND'] = ($arParams['WIND'] == 'Y');
+		// Текущая погода
+		$arParams['CURRENT_WEATHER'] = ($arParams['CURRENT_WEATHER'] == 'Y');
 
 		return $arParams;
 	}
@@ -88,9 +90,9 @@ class ExampleCompSimple extends CBitrixComponent
 		// Ip адрес пользователя
 		$ipAddress = GeoIp\Manager::getRealIp();
 		// Даные о геопозиции
-		//$geo_data = $result = GeoIp\Manager::getDataResult($ipAddress, "ru")->getGeoData();
+		$geo_data = $result = GeoIp\Manager::getDataResult($ipAddress, "ru")->getGeoData();
 		// Тестовые данные для локального сервера
-		$geo_data = GeoIp\Manager::getDataResult('151.252.109.208', "ru")->getGeoData();
+		//$geo_data = GeoIp\Manager::getDataResult('151.252.109.208', "ru")->getGeoData();
 		// Если местоположение найдено
 		if (isset($geo_data->cityName)) {
 			// Запрос к api погоды
@@ -107,6 +109,11 @@ class ExampleCompSimple extends CBitrixComponent
 				if ($this->arParams['HUMIDITY']) $weather['HUMIDITY'] = $weather_api_result->main->humidity;
 				// Давление
 				if ($this->arParams['PRESSURE']) $weather['PRESSURE'] = $weather_api_result->main->pressure;
+				// Текущая погода
+				if ($this->arParams['CURRENT_WEATHER']) $weather['CURRENT_WEATHER'] = [
+					'MAIN' => $weather_api_result->weather[0]->main,
+					'IMG' => $weather_api_result->weather[0]->icon,
+				];
 				// Ветер
 				if ($this->arParams['WIND']) $weather['WIND'] = [
 					// Скорость ветра
